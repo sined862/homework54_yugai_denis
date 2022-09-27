@@ -1,0 +1,39 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}
+    Product create
+{% endblock %}
+
+{% block content %}
+<h1 class="m-3">Создание нового товара: </h1>
+<form class="m-3" action="{% url 'add_product' %}" method="POST">
+    {% csrf_token %}
+    <div class="input-group mt-4 mb-4">
+        <span class="input-group-text" id="inputGroup-sizing-default">Название: </span>
+        <input required placeholder="Введите название товара" name="title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="form-floating mb-4">
+        <textarea style="height:150px" class="form-control" id="floatingTextarea" name="description"></textarea>
+        <label for="floatingTextarea">Описание:</label>
+    </div>
+    <div class="input-group mt-4 mb-4">
+        <span class="input-group-text" id="inputGroup-sizing-default">Цена: </span>
+        <input required placeholder="Введите цену товара" name="price" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mt-4 mb-4">
+        <span class="input-group-text" id="inputGroup-sizing-default">Путь до картинки: </span>
+        <input required placeholder="Введите url картинки" name="image" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mt-4 mb-4">
+        <select name="category_id" id="category_id">
+            {% for category in categories %}
+                <option value="{{category.id}}">{{category.title}}</option>
+            {% endfor %}
+        </select>
+    </div>
+      <button type="submit" class="btn btn-primary ms-2 ps-3 pe-3 mt-4">Создать</button>
+</form>
+<p class="mt-4 ms-2"><a href="../">вернуться на главную</a></p>
+{% endblock %}
+
+
