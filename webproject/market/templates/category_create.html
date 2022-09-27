@@ -4,6 +4,18 @@
     Category create
 {% endblock %}
 
+
+
+{% block menu %}
+  <li class="nav-item">
+    <a class="nav-link active text-light" aria-current="page" href="{% url 'products' %}">Товары</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active text-light" aria-current="page" href="{% url 'add_product' %}">+добавить товары</a>
+  </li>
+{% endblock %}
+
+
 {% block content %}
 <h1 class="m-3">Создание новой категории: </h1>
 <form class="m-3" action="{% url 'add_category' %}" method="POST">
