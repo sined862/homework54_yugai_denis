@@ -1,0 +1,31 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}
+    Prduct detail
+{% endblock %}
+
+{% block menu %}
+<li class="nav-item">
+    <a class="nav-link active text-light" aria-current="page" href="">Товары</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active text-light" aria-current="page" href="">+добавить товары</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link active text-light" aria-current="page" href="">+добавить категории</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+<div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text"><img width="400" src="{{ product.image }}" alt="image"></p>
+      <p class="card-text">{{product.category_id}}</p>
+      <p class="card-text"><small class="text-muted">Цена: <strong>{{product.price}}</strong></small></p>
+      <p class="card-text">{{product.description}}</p>
+      <p class="card-text">Добавлено: {{product.created_at}}</p>
+    </div>
+</div>
+<p class="mt-4 ms-2"><a href="../">вернуться на главную</a></p>
+{% endblock %}

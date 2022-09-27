@@ -8,7 +8,7 @@ class Category(models.Model):
 
 
     def __str__(self) -> str:
-        return f'{self.title}, {self.description}'
+        return f'{self.title}'
 
 
 class Product(models.Model):

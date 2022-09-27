@@ -1,12 +1,47 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    home
-</body>
-</html>
+﻿{% extends 'base.html' %}
+
+{% block menu %}
+  <li class="nav-item">
+    <a class="nav-link active text-light" aria-current="page" href="">Товары</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active text-light" aria-current="page" href="">+добавить товары</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active text-light" aria-current="page" href="">+добавить категории</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+{% if products %}
+
+{% for product in products %}
+<div class="card mb-3">
+    <div class="card-body">
+      <a href="{% url 'product_detail' product.pk %}"><h5 class="card-title">{{product.title}}</h5></a>
+        <p class="card-text">
+            {% for category in categories %}
+            {% if category.id == product.category_id %}
+            {{category}}
+            {% endif %}
+            {% endfor %}
+        </p>
+      <p class="card-text"><small class="text-muted">Цена: <strong>{{product.price}}</strong></small></p>
+        <p><a href="{% url 'product_detail' product.pk %}"> Подробнее...</a></p>
+    </div>
+  </div>
+
+  
+{% endfor %}
+
+{% else %}
+<h1>Вы не создали еще ни одной задачи!</h1>
+<p><a href="add/">Добавить новую задачу</a></p>
+{% endif %}
+
+
+
+
+
+
+{% endblock %}
